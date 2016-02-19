@@ -1,0 +1,66 @@
+<?php
+
+
+?>
+<script>
+    $(document).ready(function () {
+        $('.nepaliDatePicker').nepaliDatePicker();
+    });
+</script>
+
+<?=$this->Html->link('List items', array('action' => 'index'),['class'=>'btn btn-primary pull-right']);?>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Add New Scrap Details
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <form method="post">
+                            <input type="hidden" name="id" value="<?=$scrap_mains['id'];?>">
+                            <tr>
+                                <td>Date</td>
+                                <td><input required="required" class="form-control nepaliDatePicker" id="nepaliDatePicker" name="date" type="text" value="<?=$scrap_mains['date'];?>"> </td>
+                            </tr>
+                            <tr>
+                                <td>Scrap</td>
+                                <td><input name="scrap" type="text" value="<?=$scrap_mains['scrap'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td>Segregated Waste</td>
+                                <td><input name="segregated_waste" type="text" value="<?=$scrap_mains['segregated_waste'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td>Burnt Scrap</td>
+                                <td><input name="foaming_scrap" type="text" value="<?=$scrap_mains['foaming_scrap'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td>Sieved Dust</td>
+                                <td><input name="sieved_dust" type="text" value="<?=$scrap_mains['sieved_dust'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td>Foaming Scrap</td>
+                                <td><input name="magnetic_wasted" type="text" value="<?=$scrap_mains['magnetic_wasted'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td>Final Chipps</td>
+                                <td><input name="final_chipps" type="text" value="<?=$scrap_mains['final_chipps'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td>Percentage</td>
+                                <td><input name="percentage" type="text" value="<?=$scrap_mains['percentage'];?>" class="form-control" required="required"> </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input name="submit" type="submit" value="Submit" class="btn btn-primary pull-right"> </td>
+                            </tr>
+                        </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

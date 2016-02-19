@@ -1,0 +1,32 @@
+<?php 
+
+$this->loadModel("StoreMaterial");
+		$this->loadModel("MixingMaterial");
+		$this->loadModel("PrintingPattern");
+		$this->loadModel("MixingPattern");
+		//Store materials from store
+		$master_list = $this->StoreMaterial->query("select * from store_materials");
+		$i = 0;
+		foreach($master_list as $master_list){
+			$store_master_id = $master_list['store_materials']['id'];
+			$master_name = $master_list['store_materials']['name'];
+			$master[$i] = mysql_real_escape_string($master_name);
+			// echo $master_name;die;
+
+			$mix_all_materials = $this->MixingMaterial->query("select * from mixing_materials");
+			foreach($mix_all_materials as $mix){
+				$this->MixingMaterial->query("update mixing_materials set name = '$master[$i]' where master_material_id = $store_master_id");
+			}
+
+			$print_all_materials = $this->PrintingPattern->query("select * from printing_pattern");
+			foreach($print_all_materials as $print){
+				$this->PrintingPattern->query("update printing_pattern set pattern_name = '$master[$i]' where master_material_id = $store_master_id");
+			}
+
+			$print_all_materials = $this->MixingPattern->query("select * from mixing_pattern");
+			foreach($print_all_materials as $rexin){
+				$this->MixingPattern->query("update mixing_pattern set pattern_name = '$master[$i]' where master_material_id = $store_master_id");
+			}
+
+			$i++;
+		}
